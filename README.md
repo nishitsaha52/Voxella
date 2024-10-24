@@ -111,6 +111,9 @@ npm test
 ### 🧪 Test Cases Include:
 - 📢 **MicrophoneButton**: Properly starts and stops audio recording.
 - 🌗 **ThemeToggler**: Correctly switches between dark and light themes.
+- 📜 **PastTranscription**: Displays previously saved transcriptions accurately.
+- ✍️ **TranscriptionDisplay**: Shows real-time transcriptions correctly as audio is processed.
+- ⏳ **PreLoader**: Appears during initialization and disappears once the app is ready.
   
 ---
 
