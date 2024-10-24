@@ -1,32 +1,37 @@
 import React, { useState } from 'react';
-import { FaMicrophone, FaStop } from 'react-icons/fa';
+import { FaMicrophoneAlt } from 'react-icons/fa';
+import { FaCircleStop } from "react-icons/fa6";
 import useRecorder from '../hooks/useRecorder';
 
+// MicrophoneButton component to control audio recording
 function MicrophoneButton({ handleData }) {
+  // State to track if recording is in progress
   const [isRecording, setIsRecording] = useState(false);
+  // Use the custom hook to get start and stop recording functions
   const { startRecording, stopRecording } = useRecorder(handleData);
 
+  // Toggle recording state when button is clicked
   const toggleRecording = () => {
     if (isRecording) {
-      stopRecording();
+      stopRecording(); // Stop recording if currently recording
     } else {
-      startRecording();
+      startRecording(); // Start recording if not currently recording
     }
-    setIsRecording(!isRecording);
+    setIsRecording(!isRecording); // Toggle the recording state
   };
 
   return (
     <div className="button-container">
       <button
-        onClick={toggleRecording}
-        className={`microphone-button ${isRecording ? 'recording' : 'not-recording'}`}
+        onClick={toggleRecording} // Handle button click to toggle recording
+        className={`microphone-button ${isRecording ? 'recording' : 'not-recording'}`} // Apply conditional class based on recording state
       >
         {isRecording ? (
-          <FaStop className="icon" />
+          <FaCircleStop className="icon" /> // Show stop icon if recording
         ) : (
-          <FaMicrophone className="icon" />
+          <FaMicrophoneAlt className="icon" /> // Show microphone icon if not recording
         )}
-        {isRecording && (
+        {isRecording && ( // Show animation only when recording
           <span className="ping-animation"></span>
         )}
       </button>
@@ -35,4 +40,3 @@ function MicrophoneButton({ handleData }) {
 }
 
 export default MicrophoneButton;
- 
